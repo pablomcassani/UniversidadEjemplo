@@ -41,7 +41,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBAnularInscripcion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,7 +92,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Anular inscripsion");
+        jBAnularInscripcion.setText("Anular inscripsion");
+        jBAnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAnularInscripcionActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
 
@@ -135,7 +140,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jButton1)
                 .addGap(52, 52, 52)
-                .addComponent(jButton2)
+                .addComponent(jBAnularInscripcion)
                 .addGap(51, 51, 51)
                 .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -163,7 +168,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(jBAnularInscripcion)
                     .addComponent(jButton3))
                 .addGap(20, 20, 20))
         );
@@ -172,14 +177,18 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        inscripcionData id = new inscripcionData();
+        InscripcionData id = new InscripcionData();
         id.guardarinscripcion();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jBAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularInscripcionActionPerformed
+        
+    }//GEN-LAST:event_jBAnularInscripcionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAnularInscripcion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
