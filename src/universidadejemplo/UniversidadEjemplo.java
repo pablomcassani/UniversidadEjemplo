@@ -46,12 +46,12 @@ public class UniversidadEjemplo {
 //        alu.listarAlumnos();
 
        //Prueba agregar materia.
-//       Materia ingles = new Materia("Inglés ", 1, true);
+       Materia ingles = new Materia("Inglés ", 1, true);
 //       MateriaData mat = new MateriaData();
 //       mat.guardarMateria(ingles);
 
         //Prueba modificar materia.
-            Materia ingles = new Materia(3,"Inglés 2", 2, true);
+//            Materia ingles = new Materia(3,"Inglés 2", 2, true);
 //            MateriaData mat = new MateriaData();
 //            mat.modificarMateria(ingles);
 
@@ -68,7 +68,7 @@ public class UniversidadEjemplo {
 //        mat.listarMateria();
 
         //Prueba agregar inscripcion.
-        Inscripcion ins = new Inscripcion(johana, ingles, 9.00);
+        Inscripcion ins = new Inscripcion(johana,ingles ,9.00);
         InscripcionData insdata = new InscripcionData();
         insdata.guardarInscripcion(ins);
     }
