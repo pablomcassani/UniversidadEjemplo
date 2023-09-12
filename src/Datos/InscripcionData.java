@@ -23,12 +23,14 @@ public InscripcionData(){
         con = miConexion.getConexion();
 }     
     public void guardarInscripcion(Inscripcion inscripcion){
-               String sql = "INSERT INTO inscripcion (alumno, materia, nota) VALUES (?,?,?)";
+               String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?,?,?)";
         try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-           ps.setObject(1, inscripcion.getAlumno());
-           ps.setObject(2, inscripcion.getMateria());
-           ps.setDouble(3, inscripcion.getNota());
+           ps.setDouble(1, inscripcion.getNota());
+           ps.setObject(2, inscripcion.getAlumno().getIdAlumno());
+           ps.setObject(3, inscripcion.getMateria().getIdMateria());           
+        
+          
            ps.executeUpdate();
            
           ResultSet rs = ps.getGeneratedKeys();

@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package universidadejemplo;
+package Vistas;
 
+import Vistas.GestionDeMaterias;
+import Vistas.GestiondeAlumnos;
+import Vistas.ConsulltaDeAlumnosPorMateria;
+import Vistas.ActualisacionDeNotas;
 import Entidades.Alumno;
 
 /**
