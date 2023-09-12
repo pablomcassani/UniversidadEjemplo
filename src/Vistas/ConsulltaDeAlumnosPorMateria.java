@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Datos.MateriaData;
+import Entidades.Materia;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,7 +33,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCSeleccioneMateria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -44,6 +46,12 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado de Alumnos por Materia");
 
         jLabel2.setText("Seleccione una Materia:");
+
+        jCSeleccioneMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCSeleccioneMateriaActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,7 +83,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel2)
                                 .addGap(39, 39, 39)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jCSeleccioneMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -93,7 +101,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCSeleccioneMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -104,10 +112,16 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCSeleccioneMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCSeleccioneMateriaActionPerformed
+        MateriaData md = new MateriaData();
+        Materia MateriaSelecionada = (Materia) jCSeleccioneMateria.getSelectedItem();
+        md.listarMateria();
+    }//GEN-LAST:event_jCSeleccioneMateriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCSeleccioneMateria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

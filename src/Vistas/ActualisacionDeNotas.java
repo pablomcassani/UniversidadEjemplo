@@ -38,7 +38,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
         jCAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNotaMateria = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
@@ -71,10 +71,10 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTNotaMateria);
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBGuardarActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jButton1)
+                .addComponent(jBGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(56, 56, 56))
@@ -121,7 +121,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jBGuardar)
                     .addComponent(jButton2))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -129,21 +129,20 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         InscripcionData id =new InscripcionData();
         id.actualisarNota();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jCAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnoActionPerformed
         AlumnoData ad = new AlumnoData();
         Alumno AlumnoSelecionado = (Alumno) jCAlumno.getSelectedItem();
         ad.listarAlumnos();
-        
     }//GEN-LAST:event_jCAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCAlumno;
     private javax.swing.JLabel jLabel1;
