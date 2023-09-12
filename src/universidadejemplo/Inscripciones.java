@@ -5,7 +5,9 @@
  */
 package universidadejemplo;
 
+import Datos.AlumnoData;
 import Datos.InscripcionData;
+import Entidades.Alumno;
 import Entidades.Inscripcion;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,7 +38,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCSeelecionarAlumno = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -66,6 +68,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel1.setText("Formulario de inscripcion");
 
         jLabel3.setText("Seleccione un Alumno:");
+
+        jCSeelecionarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCSeelecionarAlumnoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Listado de Materias:");
@@ -113,7 +121,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(40, 40, 40)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jCSeelecionarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +166,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCSeelecionarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -188,12 +196,18 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         id.borrarInscripcionMateriaAlumno();
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
+    private void jCSeelecionarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCSeelecionarAlumnoActionPerformed
+        AlumnoData ad = new AlumnoData();
+        Alumno alumnoselecionado = (Alumno) jCSeelecionarAlumno.getSelectedItem();
+        ad.listarAlumnos();
+    }//GEN-LAST:event_jCSeelecionarAlumnoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnularInscripcion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCSeelecionarAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
