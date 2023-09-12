@@ -7,6 +7,9 @@ package Vistas;
 
 import Datos.AlumnoData;
 import Entidades.Alumno;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -188,7 +191,12 @@ public class GestiondeAlumnos extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         AlumnoData ad = new AlumnoData();
-        ad.guardarAlumno(Alumno);
+        Alumno Alumno = null;
+        try {
+            ad.guardarAlumno(Alumno);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestiondeAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
@@ -198,7 +206,12 @@ public class GestiondeAlumnos extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         AlumnoData ad = new AlumnoData();
-        ad.guardarAlumno(Alumno);
+        Alumno Alumno = null;
+        try {
+            ad.guardarAlumno(Alumno);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestiondeAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 
