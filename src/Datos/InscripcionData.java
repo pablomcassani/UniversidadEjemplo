@@ -84,4 +84,8 @@ public InscripcionData(){
         }
         return inscripcionesPorAlumno;
     }
+
+    public void borrarInscripcionMateriaAlumno() {
+        
+    }
 }

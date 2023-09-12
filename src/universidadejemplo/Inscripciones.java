@@ -5,6 +5,8 @@
  */
 package universidadejemplo;
 
+import Datos.InscripcionData;
+import Entidades.Inscripcion;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -178,11 +180,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         InscripcionData id = new InscripcionData();
-        id.guardarinscripcion();
+        id.guardarInscripcion(Inscripcion);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularInscripcionActionPerformed
-        
+        InscripcionData id = new InscripcionData();
+        id.borrarInscripcionMateriaAlumno();
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
 
