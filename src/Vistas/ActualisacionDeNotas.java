@@ -39,7 +39,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNotaMateria = new javax.swing.JTable();
         jBGuardar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jSalir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,7 +78,12 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Salir");
+        jSalir.setText("Salir");
+        jSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +110,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                 .addGap(99, 99, 99)
                 .addComponent(jBGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jSalir)
                 .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
@@ -122,7 +127,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
-                    .addComponent(jButton2))
+                    .addComponent(jSalir))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -140,13 +145,17 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
         ad.listarAlumnos();
     }//GEN-LAST:event_jCAlumnoActionPerformed
 
+    private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTNotaMateria;
     // End of variables declaration//GEN-END:variables

@@ -36,7 +36,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jCSeleccioneMateria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -66,7 +66,12 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Salir");
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +96,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jBSalir)
                 .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
@@ -105,7 +110,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
+                .addComponent(jBSalir)
                 .addGap(34, 34, 34))
         );
 
@@ -118,9 +123,13 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         md.listarMateria();
     }//GEN-LAST:event_jCSeleccioneMateriaActionPerformed
 
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCSeleccioneMateria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

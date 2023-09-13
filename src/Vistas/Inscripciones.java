@@ -43,7 +43,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jTable2 = new javax.swing.JTable();
         jBInscribir = new javax.swing.JButton();
         jBAnularInscripcion = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +110,12 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("Salir");
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,7 +158,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jBAnularInscripcion)
                 .addGap(51, 51, 51)
-                .addComponent(jButton3)
+                .addComponent(jBSalir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -180,7 +185,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBInscribir)
                     .addComponent(jBAnularInscripcion)
-                    .addComponent(jButton3))
+                    .addComponent(jBSalir))
                 .addGap(20, 20, 20))
         );
 
@@ -207,11 +212,15 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         id.obtenerMateriasCursadas();
     }//GEN-LAST:event_jRBMateriasInscriptasActionPerformed
 
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAnularInscripcion;
     private javax.swing.JButton jBInscribir;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

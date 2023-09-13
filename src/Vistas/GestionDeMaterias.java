@@ -30,6 +30,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -70,6 +71,11 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +182,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
@@ -186,10 +192,15 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         MateriaData md = new MateriaData();
-        Materia Materia = null;
-        md.guardarMateria(Materia);
-        md.modificarMateria(Materia);
+        md.guardarMateria(Materia materia);
+        md.modificarMateria(Materia materia);
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -198,6 +209,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

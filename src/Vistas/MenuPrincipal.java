@@ -6,7 +6,7 @@
 package Vistas;
 
 import Vistas.GestionDeMaterias;
-import Vistas.GestiondeAlumnos;
+import Vistas.GestiondeAlumnos1;
 import Vistas.ConsulltaDeAlumnosPorMateria;
 import Vistas.ActualisacionDeNotas;
 import Entidades.Alumno;
@@ -170,7 +170,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMFormularioDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeAlumnosActionPerformed
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        GestiondeAlumnos gda = new GestiondeAlumnos();
+        GestiondeAlumnos1 gda = new GestiondeAlumnos1();
         gda.setVisible(true);
         jDEscritorio.add(gda);
         jDEscritorio.moveToFront(gda);
