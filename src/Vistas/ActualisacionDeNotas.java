@@ -8,6 +8,8 @@ package Vistas;
 import Datos.AlumnoData;
 import Datos.InscripcionData;
 import Entidades.Alumno;
+import Entidades.Materia;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -135,14 +137,28 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        
         InscripcionData id =new InscripcionData();
         id.actualisarNota();
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jCAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnoActionPerformed
+        
+        InscripcionData id = new InscripcionData();
+        ArrayList <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas();
+        
         AlumnoData ad = new AlumnoData();
+        ArrayList <Alumno> ListarAlumnos = (ArrayList <Alumno>) ad.listarAlumnos();
+        
         Alumno AlumnoSelecionado = (Alumno) jCAlumno.getSelectedItem();
-        ad.listarAlumnos();
+        
+        for(Materia mat:InscripcionData.obtenerMateriasCursadas()){
+            modelo.addRow(new object[]){
+                mat.getcodigo();
+                mat.getNombre();
+                mat.getNota();
+            }
+        }
     }//GEN-LAST:event_jCAlumnoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed

@@ -6,6 +6,7 @@
 package Vistas;
 
 import Datos.InscripcionData;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,6 +32,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        javax.swing.ButtonGroup MateriasInscriptasNoInscriptas = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -38,7 +40,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jRBMateriasInscriptas = new javax.swing.JRadioButton();
-        jRMateriasNoInscriptas = new javax.swing.JRadioButton();
+        jRBMateriasNoInscriptas = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jBInscribir = new javax.swing.JButton();
@@ -69,6 +71,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Listado de Materias:");
 
+        MateriasInscriptasNoInscriptas.add(jRBMateriasInscriptas);
         jRBMateriasInscriptas.setText("Materias Inscriptas");
         jRBMateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,10 +79,11 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jRMateriasNoInscriptas.setText("Materias no Inscriptas");
-        jRMateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
+        MateriasInscriptasNoInscriptas.add(jRBMateriasNoInscriptas);
+        jRBMateriasNoInscriptas.setText("Materias no Inscriptas");
+        jRBMateriasNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRMateriasNoInscriptasActionPerformed(evt);
+                jRBMateriasNoInscriptasActionPerformed(evt);
             }
         });
 
@@ -135,7 +139,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jRBMateriasInscriptas)
                         .addGap(70, 70, 70)
-                        .addComponent(jRMateriasNoInscriptas)
+                        .addComponent(jRBMateriasNoInscriptas)
                         .addGap(71, 71, 71))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +182,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRBMateriasInscriptas)
-                    .addComponent(jRMateriasNoInscriptas))
+                    .addComponent(jRBMateriasNoInscriptas))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -202,14 +206,33 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         id.borrarInscripcionMateriaAlumno();
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
-    private void jRMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRMateriasNoInscriptasActionPerformed
+    private void jRBMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoInscriptasActionPerformed
         InscripcionData id = new InscripcionData();
-        id.obtenerMateriasNOCursadas();
-    }//GEN-LAST:event_jRMateriasNoInscriptasActionPerformed
+        ArrayList <Materia> obtenerMateriasNoCursadas = id.obtenerMateriasNOCursadas();
+        if(jRBMateriasNoInscriptas.isSelected()){
+            for(Materia mat:InscripcionData.obtenerMatriasNOCursadas()){
+                modelo.addRow(new Object[]){
+                    mat.getId();
+                    mat.getNombre();
+                    mat.getAño();
+                }
+            }
+        }    
+    }//GEN-LAST:event_jRBMateriasNoInscriptasActionPerformed
 
     private void jRBMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasInscriptasActionPerformed
         InscripcionData id = new InscripcionData();
-        id.obtenerMateriasCursadas();
+        ArrayList <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas();
+        if(jRBMateriasInscriptas.isSelected()){
+            for(Materia mat:InscripcionData.obtenerMatriasCursadas()){
+                modelo.addRow(new Object[]){
+                    mat.getId();
+                    mat.getNombre();
+                    mat.getAño();
+                }
+            }
+        }
+        
     }//GEN-LAST:event_jRBMateriasInscriptasActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -227,7 +250,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRBMateriasInscriptas;
-    private javax.swing.JRadioButton jRMateriasNoInscriptas;
+    private javax.swing.JRadioButton jRBMateriasNoInscriptas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
