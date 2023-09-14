@@ -10,6 +10,7 @@ import Datos.InscripcionData;
 import Entidades.Alumno;
 import Entidades.Materia;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,7 +38,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCAlumno = new javax.swing.JComboBox<>();
+        jCBAlumno = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTNotaMateria = new javax.swing.JTable();
         jBGuardar = new javax.swing.JButton();
@@ -54,9 +55,9 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Selecciona un Alumno:");
 
-        jCAlumno.addActionListener(new java.awt.event.ActionListener() {
+        jCBAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCAlumnoActionPerformed(evt);
+                jCBAlumnoActionPerformed(evt);
             }
         });
 
@@ -102,7 +103,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel2)
                                 .addGap(35, 35, 35)
-                                .addComponent(jCAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -123,7 +124,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jCAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
@@ -139,27 +140,25 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         
         InscripcionData id =new InscripcionData();
-        id.actualisarNota();
+        id.actualizarNota(WIDTH, WIDTH, WIDTH);
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jCAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAlumnoActionPerformed
+    private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         
         InscripcionData id = new InscripcionData();
-        ArrayList <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas();
+        List <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas(WIDTH);
         
         AlumnoData ad = new AlumnoData();
         ArrayList <Alumno> ListarAlumnos = (ArrayList <Alumno>) ad.listarAlumnos();
         
-        Alumno AlumnoSelecionado = (Alumno) jCAlumno.getSelectedItem();
+        Alumno AlumnoSelecionado = (Alumno) jCBAlumno.getSelectedItem();
         
-        for(Materia mat:InscripcionData.obtenerMateriasCursadas()){
-            modelo.addRow(new object[]){
-                mat.getcodigo();
-                mat.getNombre();
-                mat.getNota();
+        
+        
+            for(Materia mat:id.obtenerMateriasCursadas(WIDTH)){
+                modelo.addRow(new object[]{mat.getIdMateria(),mat.getNombre()});
             }
-        }
-    }//GEN-LAST:event_jCAlumnoActionPerformed
+    }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
         this.dispose();
@@ -168,7 +167,7 @@ public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JComboBox<String> jCAlumno;
+    private javax.swing.JComboBox<String> jCBAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jSalir;

@@ -6,7 +6,9 @@
 package Vistas;
 
 import Datos.InscripcionData;
+import Entidades.Materia;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -198,38 +200,33 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
         InscripcionData id = new InscripcionData();
-        id.guardarinscripcion();
+        id.guardarInscripcion(inscripcion);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
     private void jBAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAnularInscripcionActionPerformed
         InscripcionData id = new InscripcionData();
-        id.borrarInscripcionMateriaAlumno();
+        id.borrarInscripcionMateriaAlumno(WIDTH, WIDTH);
     }//GEN-LAST:event_jBAnularInscripcionActionPerformed
 
     private void jRBMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoInscriptasActionPerformed
         InscripcionData id = new InscripcionData();
-        ArrayList <Materia> obtenerMateriasNoCursadas = id.obtenerMateriasNOCursadas();
+        Materia mati = new Materia();
+        List <Materia> obtenerMateriasNoCursadas = id.obtenerMateriasNoCursadas(WIDTH);
         if(jRBMateriasNoInscriptas.isSelected()){
-            for(Materia mat:InscripcionData.obtenerMatriasNOCursadas()){
-                modelo.addRow(new Object[]){
-                    mat.getId();
-                    mat.getNombre();
-                    mat.getAño();
-                }
+            for(Materia mati:id.obtenerMateriasNoCursadas(WIDTH)){
+                modelo.addRow(new Object[]{mati.getIdMateria(), mati.getNombre(), mati.getAnioMateria()});
             }
         }    
     }//GEN-LAST:event_jRBMateriasNoInscriptasActionPerformed
 
     private void jRBMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasInscriptasActionPerformed
         InscripcionData id = new InscripcionData();
-        ArrayList <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas();
+        Materia matni = new Materia();
+        
+        List <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas(WIDTH);
         if(jRBMateriasInscriptas.isSelected()){
-            for(Materia mat:InscripcionData.obtenerMatriasCursadas()){
-                modelo.addRow(new Object[]){
-                    mat.getId();
-                    mat.getNombre();
-                    mat.getAño();
-                }
+            for(Materia matnoi:id.obtenerMateriasCursadas(WIDTH)){
+                modelo.addRow(new Object[]{matnoi.getIdMateria(), matnoi.getNombre(), matnoi.getAnioMateria()});
             }
         }
         

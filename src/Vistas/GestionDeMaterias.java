@@ -193,7 +193,10 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         MateriaData md = new MateriaData();
         md.guardarMateria(Materia materia);
-        md.modificarMateria(Materia materia);
+        
+        if(Materia){
+            md.modificarMateria(Materia materia);
+        }    
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed

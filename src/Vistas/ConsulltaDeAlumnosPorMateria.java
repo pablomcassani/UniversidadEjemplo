@@ -10,6 +10,7 @@ import Datos.MateriaData;
 import Entidades.Alumno;
 import Entidades.Materia;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -123,24 +124,29 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private void jCBSeleccioneMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBSeleccioneMateriaActionPerformed
         
         MateriaData md = new MateriaData();
+        
         ArrayList <Materia> listarMaterias = (ArrayList <Materia>) md.listarMateria();
         
         InscripcionData id = new InscripcionData();
-        ArrayList <Alumno> obtenerAlumnosXMateria = id.obtenerAlumnosXMateria(),
+        List <Alumno> obtenerAlumnosXMateria = id.obtenerAlumnoXMateria(WIDTH);
         
                 
         Materia MateriaSelecionada = (Materia) jCBSeleccioneMateria.getSelectedItem();
         md.listarMateria();
         
-        for(Alumno alu:InscripcionData.obtenerAlumnosXMateria()){
-            modelo.addRow(new object[]){
-                alu.getIdAlumno();
-                alu.getDni();
-                alu.getApellido();
-                alu.getNombre();
         
+        
+            for(Alumno alu:id.obtenerAlumnoXMateria(WIDTH)){
+                modelo.addRow(new object[]{
+                    alu.getIdAlumno(),
+                    alu.getDni(),
+                    alu.getApellido(),
+                    alu.getNombre()});
+        
+            }
+            
     }//GEN-LAST:event_jCBSeleccioneMateriaActionPerformed
-
+        
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
