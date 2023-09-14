@@ -2,21 +2,21 @@
 package Entidades;
 
 public class Inscripcion {
-  private int idInscripcion;  
+  private int idInscripcion = -1;  
   private  Alumno alumno;
   private  Materia materia;
-  private  double nota;
+  private  int nota;
 
     public Inscripcion() {
     }
 
-    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(Alumno alumno, Materia materia, int nota) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
     }
 
-    public Inscripcion(double nota) {
+    public Inscripcion(int nota) {
         this.nota = nota;
     }
 
@@ -44,11 +44,11 @@ public class Inscripcion {
         this.materia = materia;
     }
 
-    public double getNota() {
+    public int getNota() {
         return nota;
     }
 
-    public void setNota(double nota) {
+    public void setNota(int nota) {
         this.nota = nota;
     }
 

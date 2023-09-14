@@ -40,10 +40,11 @@ public AlumnoData(){
         }catch(SQLException | NullPointerException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a Alumno "+ex.getMessage());
     }
+
  }
     public Alumno buscarAlumno(int id){
         Alumno alumno = null;
-        String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno = ? AND estado = 1";
+        String sql = "SELECT dni,apellido,nombre,fechaNacimiento FROM alumno WHERE idAlumno = ?";
         PreparedStatement ps = null;
         try{
             ps = con.prepareStatement(sql);
@@ -58,9 +59,9 @@ public AlumnoData(){
             alumno.setNombre(rs.getString("nombre"));
             alumno.setFechaNac(rs.getDate("FechaNacimiento").toLocalDate());
             alumno.setActivo(true);
-            JOptionPane.showMessageDialog(null,alumno.toString());
+//            JOptionPane.showMessageDialog(null,alumno.toString());
         }else {
-                JOptionPane.showMessageDialog(null, "No existe el alumno");
+//                JOptionPane.showMessageDialog(null, "No existe el alumno");
                 }
         ps.close();
         } catch (SQLException ex){

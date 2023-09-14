@@ -19,7 +19,7 @@ public class MateriaData {
     public MateriaData(){
     con = miConexion.getConexion();
 }
-    public void guardarMateria(Materia materia){
+    public void guardarMateria(Materia materia) throws SQLException{
                String sql = "INSERT INTO materia ( nombre, año, estado) VALUES (?,?,?)";
         try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -31,6 +31,7 @@ public class MateriaData {
           ResultSet rs = ps.getGeneratedKeys();
           if(rs.next()){
               materia.setIdMateria(rs.getInt(1));
+                JOptionPane.showMessageDialog(null,"Materia agregada.");
           }else{
               System.out.println("No se pudo obtener ID");
         }
@@ -41,7 +42,7 @@ public class MateriaData {
     }
         public Materia buscarMateria(int id){
         Materia materia = null;
-        String sql = "SELECT nombre, año, estado FROM materia WHERE idMateria = ? AND estado = 1";
+        String sql = "SELECT nombre, año, estado FROM materia WHERE idMateria = ?";
         PreparedStatement ps = null;
         try{
             ps = con.prepareStatement(sql);
@@ -55,12 +56,12 @@ public class MateriaData {
             materia.setNombre(rs.getString("nombre"));
             materia.setAnioMateria(rs.getInt("año"));
             materia.setActivo(true);
-            JOptionPane.showMessageDialog(null, materia.toString());
+//            JOptionPane.showMessageDialog(null, materia.toString());
         }else {
-                JOptionPane.showMessageDialog(null, "No existe el materia");
+                JOptionPane.showMessageDialog(null, "No está anotado a materia");
                 }
         ps.close();
-        } catch (SQLException ex){
+        } catch (SQLException | NullPointerException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia "+ex.getMessage());
         }
         return materia;
