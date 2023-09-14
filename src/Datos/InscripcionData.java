@@ -95,6 +95,12 @@ public InscripcionData(){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripcion "+ex.getMessage());
         }
         return inscripcionesPorAlumno;
+        
+        
+    }
+
+    public ArrayList<Alumno> obtenerAlumnosXMateria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
