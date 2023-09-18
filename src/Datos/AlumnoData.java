@@ -59,9 +59,9 @@ public AlumnoData(){
             alumno.setNombre(rs.getString("nombre"));
             alumno.setFechaNac(rs.getDate("FechaNacimiento").toLocalDate());
             alumno.setActivo(true);
-//            JOptionPane.showMessageDialog(null,alumno.toString());
+            JOptionPane.showMessageDialog(null,alumno.toString());
         }else {
-//                JOptionPane.showMessageDialog(null, "No existe el alumno");
+                JOptionPane.showMessageDialog(null, "No existe el alumno");
                 }
         ps.close();
         } catch (SQLException ex){
@@ -151,7 +151,7 @@ public AlumnoData(){
             int fila = ps.executeUpdate();
             
             if(fila==1){
-                JOptionPane.showMessageDialog(null," Se eliminó el alumno.");
+                JOptionPane.showMessageDialog(null," Se borró alumno.");
             }
             ps.close();
         } catch (SQLException e){

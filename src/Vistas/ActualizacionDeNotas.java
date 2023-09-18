@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nacho
  */
-public class ActualisacionDeNotas extends javax.swing.JInternalFrame {
+public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form ActualisacionDeNotas
      */
-    public ActualisacionDeNotas() {
+    public ActualizacionDeNotas() {
         initComponents();
         armarCabesera();
     }
