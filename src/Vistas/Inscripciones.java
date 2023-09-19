@@ -6,8 +6,8 @@
 package Vistas;
 
 import Datos.InscripcionData;
+import Entidades.Inscripcion;
 import Entidades.Materia;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -200,6 +200,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jBInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInscribirActionPerformed
         InscripcionData id = new InscripcionData();
+        Inscripcion inscripcion = null;
         id.guardarInscripcion(inscripcion);
     }//GEN-LAST:event_jBInscribirActionPerformed
 
@@ -210,7 +211,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 
     private void jRBMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMateriasNoInscriptasActionPerformed
         InscripcionData id = new InscripcionData();
-        Materia mati = new Materia();
+        Materia matif = new Materia();
         List <Materia> obtenerMateriasNoCursadas = id.obtenerMateriasNoCursadas(WIDTH);
         if(jRBMateriasNoInscriptas.isSelected()){
             for(Materia mati:id.obtenerMateriasNoCursadas(WIDTH)){

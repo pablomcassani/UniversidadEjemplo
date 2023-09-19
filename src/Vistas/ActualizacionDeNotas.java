@@ -156,7 +156,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         
         
             for(Materia mat:id.obtenerMateriasCursadas(WIDTH)){
-                modelo.addRow(new object[]{mat.getIdMateria(),mat.getNombre()});
+                modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre()});
             }
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 

@@ -137,7 +137,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         
         
             for(Alumno alu:id.obtenerAlumnoXMateria(WIDTH)){
-                modelo.addRow(new object[]{
+                modelo.addRow(new Object[]{
                     alu.getIdAlumno(),
                     alu.getDni(),
                     alu.getApellido(),
