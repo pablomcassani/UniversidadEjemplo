@@ -7,6 +7,9 @@ package Vistas;
 
 import Datos.MateriaData;
 import Entidades.Materia;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -192,11 +195,14 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         MateriaData md = new MateriaData();
-        md.guardarMateria(Materia materia);
-        
-        if(Materia){
-            md.modificarMateria(Materia materia);
-        }    
+        Materia Materia = null;
+        try {
+            md.guardarMateria(Materia);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionDeMaterias.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        md.modificarMateria(Materia);
+            
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
