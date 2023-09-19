@@ -44,7 +44,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
         jRBMateriasInscriptas = new javax.swing.JRadioButton();
         jRBMateriasNoInscriptas = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTInscripcion = new javax.swing.JTable();
         jBInscribir = new javax.swing.JButton();
         jBAnularInscripcion = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
@@ -89,7 +89,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTInscripcion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,7 +100,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTInscripcion);
 
         jBInscribir.setText("Inscribir");
         jBInscribir.addActionListener(new java.awt.event.ActionListener() {
@@ -252,15 +252,15 @@ public class Inscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTInscripcion;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
 private void armarCabesera(){
     modelo.addColumn("ID");
     modelo.addColumn("Nombre");
     modelo.addColumn("Año");
-
+    jTInscripcion.setModel(modelo);
 }
 
 

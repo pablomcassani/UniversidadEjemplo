@@ -179,6 +179,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Nota");
+        jTNotaMateria.setModel(modelo);
     }
 
 }
