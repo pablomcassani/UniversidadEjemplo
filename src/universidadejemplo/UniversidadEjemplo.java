@@ -9,6 +9,7 @@ import static Datos.miConexion.getConexion;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
+import Vistas.MenuPrincipal;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Month;
@@ -19,7 +20,11 @@ public class UniversidadEjemplo {
 
     public static void main(String[] args) throws SQLException {
 
-        //Prueba de agregar alumno.
+        MenuPrincipal mp = new MenuPrincipal();
+        mp.setVisible(true);
+        
+        
+      //Prueba de agregar alumno.
 //        Alumno johana = new Alumno(44220089, "Vera","Johana", LocalDate.of(2010, Month.JANUARY, 27),true);
 //       AlumnoData alu = new AlumnoData();
 //       alu.guardarAlumno(johana);

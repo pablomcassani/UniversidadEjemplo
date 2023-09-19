@@ -142,7 +142,6 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                     alu.getDni(),
                     alu.getApellido(),
                     alu.getNombre()});
-        
             }
             
     }//GEN-LAST:event_jCBSeleccioneMateriaActionPerformed
