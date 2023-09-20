@@ -10,6 +10,7 @@ import Vistas.GestiondeAlumnos;
 import Vistas.ConsulltaDeAlumnosPorMateria;
 import Vistas.ActualizacionDeNotas;
 import Entidades.Alumno;
+import Entidades.Materia;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -19,6 +20,7 @@ import java.util.TreeSet;
  */
 public class MenuPrincipal extends javax.swing.JFrame{
 public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
+public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
     /**
      * Creates new form MenuPrincipal
      */
@@ -222,7 +224,7 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
     }//GEN-LAST:event_jMAlumnosPorMateriaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-          jDEscritorio.removeAll();
+        jDEscritorio.removeAll();
         jDEscritorio.repaint();
         GestiondeAlumnos gda = new GestiondeAlumnos();
         gda.setVisible(true);
