@@ -17,10 +17,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nacho
  */
-public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
+public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     
-    public ConsulltaDeAlumnosPorMateria() {
+    public ConsultaDeAlumnosPorMateria() {
         initComponents();
         armarCabesera();
     }
@@ -84,15 +84,10 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel2)
-                                .addGap(39, 39, 39)
-                                .addComponent(jCBSeleccioneMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addGap(39, 39, 39)
+                        .addComponent(jCBSeleccioneMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -102,6 +97,10 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jBSalir)
                 .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +110,7 @@ public class ConsulltaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jCBSeleccioneMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jBSalir)

@@ -7,7 +7,7 @@ package Vistas;
 
 import Vistas.GestionDeMaterias;
 import Vistas.GestiondeAlumnos;
-import Vistas.ConsulltaDeAlumnosPorMateria;
+import Vistas.ConsultaDeAlumnosPorMateria;
 import Vistas.ActualizacionDeNotas;
 import Entidades.Alumno;
 import Entidades.Materia;
@@ -47,14 +47,14 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         jDEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMFormularioDeAlumnos = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMFormularioDeAlumno = new javax.swing.JMenuItem();
         jMFormularioDeMateria = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMFormulariodeMateria = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMManejoDeInscripcioes = new javax.swing.JMenuItem();
         jMManipulacionDeNotas = new javax.swing.JMenuItem();
-        jMAlumnosPorMateria = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMIConsultaDeAlumnosPorMateria = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -95,13 +95,13 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
             }
         });
 
-        jMenuItem2.setText("Formulario de Alumno");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMFormularioDeAlumno.setText("Formulario de Alumno");
+        jMFormularioDeAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMFormularioDeAlumnoActionPerformed(evt);
             }
         });
-        jMFormularioDeAlumnos.add(jMenuItem2);
+        jMFormularioDeAlumnos.add(jMFormularioDeAlumno);
 
         jMenuBar1.add(jMFormularioDeAlumnos);
 
@@ -112,13 +112,13 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
             }
         });
 
-        jMenuItem3.setText("Formulario de Materia");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMFormulariodeMateria.setText("Formulario de Materia");
+        jMFormulariodeMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMFormulariodeMateriaActionPerformed(evt);
             }
         });
-        jMFormularioDeMateria.add(jMenuItem3);
+        jMFormularioDeMateria.add(jMFormulariodeMateria);
 
         jMenuBar1.add(jMFormularioDeMateria);
 
@@ -142,17 +142,17 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
 
         jMenuBar1.add(jMenu8);
 
-        jMAlumnosPorMateria.setText("Consultas");
-        jMAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Consultas");
+
+        jMIConsultaDeAlumnosPorMateria.setText("Alumnos por Materia");
+        jMIConsultaDeAlumnosPorMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAlumnosPorMateriaActionPerformed(evt);
+                jMIConsultaDeAlumnosPorMateriaActionPerformed(evt);
             }
         });
+        jMenu2.add(jMIConsultaDeAlumnosPorMateria);
 
-        jMenuItem6.setText("Alumnos por Materia");
-        jMAlumnosPorMateria.add(jMenuItem6);
-
-        jMenuBar1.add(jMAlumnosPorMateria);
+        jMenuBar1.add(jMenu2);
 
         jMenu10.setText("Salir");
         jMenuBar1.add(jMenu10);
@@ -173,9 +173,14 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jMFormulariodeMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormulariodeMateriaActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        GestionDeMaterias gdm = new GestionDeMaterias();
+        gdm.setVisible(true);
+        jDEscritorio.add(gdm);
+        jDEscritorio.moveToFront(gdm);
+    }//GEN-LAST:event_jMFormulariodeMateriaActionPerformed
 
     private void jMFormularioDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeAlumnosActionPerformed
         jDEscritorio.removeAll();
@@ -188,12 +193,7 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
     }//GEN-LAST:event_jMFormularioDeAlumnosActionPerformed
 
     private void jMFormularioDeMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeMateriaActionPerformed
-        jDEscritorio.removeAll();
-        jDEscritorio.repaint();
-        GestionDeMaterias gdm = new GestionDeMaterias();
-        gdm.setVisible(true);
-        jDEscritorio.add(gdm);
-        jDEscritorio.moveToFront(gdm);
+        
     }//GEN-LAST:event_jMFormularioDeMateriaActionPerformed
 
     private void jMManejoDeInscripcioesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoDeInscripcioesActionPerformed
@@ -214,23 +214,23 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         jDEscritorio.moveToFront(adn);
     }//GEN-LAST:event_jMManipulacionDeNotasActionPerformed
 
-    private void jMAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlumnosPorMateriaActionPerformed
-        jDEscritorio.removeAll();
-        jDEscritorio.repaint();
-        ConsulltaDeAlumnosPorMateria cdapm = new ConsulltaDeAlumnosPorMateria();
-        cdapm.setVisible(true);
-        jDEscritorio.add(cdapm);
-        jDEscritorio.moveToFront(cdapm);
-    }//GEN-LAST:event_jMAlumnosPorMateriaActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMFormularioDeAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeAlumnoActionPerformed
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         GestiondeAlumnos gda = new GestiondeAlumnos();
         gda.setVisible(true);
         jDEscritorio.add(gda);
         jDEscritorio.moveToFront(gda);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMFormularioDeAlumnoActionPerformed
+
+    private void jMIConsultaDeAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIConsultaDeAlumnosPorMateriaActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultaDeAlumnosPorMateria cdapm = new ConsultaDeAlumnosPorMateria();
+        cdapm.setVisible(true);
+        jDEscritorio.add(cdapm);
+        jDEscritorio.moveToFront(cdapm);
+    }//GEN-LAST:event_jMIConsultaDeAlumnosPorMateriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,13 +271,16 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDEscritorio;
-    private javax.swing.JMenu jMAlumnosPorMateria;
+    private javax.swing.JMenuItem jMFormularioDeAlumno;
     private javax.swing.JMenu jMFormularioDeAlumnos;
     private javax.swing.JMenu jMFormularioDeMateria;
+    private javax.swing.JMenuItem jMFormulariodeMateria;
+    private javax.swing.JMenuItem jMIConsultaDeAlumnosPorMateria;
     private javax.swing.JMenuItem jMManejoDeInscripcioes;
     private javax.swing.JMenuItem jMManipulacionDeNotas;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
@@ -286,10 +289,7 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 
-
+        
 }
