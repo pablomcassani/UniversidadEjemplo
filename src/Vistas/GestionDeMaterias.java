@@ -199,42 +199,48 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try {
         
-        int Codigo = Integer.parseInt(jTCodigo.getText());
-        String Nombre = jTNombre.getText();
-        int Año = Integer.parseInt(jTAño.getText());
-        boolean Estado = jRBEstado.isSelected();
+        int codigo = Integer.parseInt(jTCodigo.getText());
+        String nombre = jTNombre.getText();
+        int año = Integer.parseInt(jTAño.getText());
+        boolean estado = jRBEstado.isSelected();
         
-      
-            MenuPrincipal.ListaMaterias.add(new Materia(Codigo,Nombre,Año,Estado));   
+            MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
             MateriaData md = new MateriaData();
-            Materia Materia = new Materia(Codigo,Nombre,Año,Estado);
-            String sql = "SELECT * FROM `materia` WHERE Nombre = 'laboratorio 5';";
-            
-            if(Materia!=sql){
-                md.guardarMateria(Materia);
+            Materia Materia = new Materia(codigo,nombre,año,estado);
+                          
+                md.modificarMateria(Materia);
                 for(Materia mat: ListaMaterias){
-                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");
+                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
                 }
-            } else {
-                if(Materia=sql){
-                    md.modificarMateria(Materia);
-            for(Materia mat: ListaMaterias){
-                System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
-                }
-            }
             
-        }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a Materia"+ex.getMessage());
-        }
-        
-            
+        } catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero: "+ex.getMessage());
+        }        
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        jTCodigo.setText("");
-        jTNombre.setText("");
-        jTAño.setText("");
+        try {
+        
+        int codigo = Integer.parseInt(jTCodigo.getText());
+        String nombre = jTNombre.getText();
+        int año = Integer.parseInt(jTAño.getText());
+        boolean estado = jRBEstado.isSelected();
+        
+            MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
+            MateriaData md = new MateriaData();
+            Materia Materia = new Materia(codigo,nombre,año,estado);
+                       
+                
+                md.guardarMateria(Materia);
+                for(Materia mat: ListaMaterias){
+                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");    
+                }
+                
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a Materia "+ex.getMessage());
+        } catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero: "+ex.getMessage());
+        }        
     }//GEN-LAST:event_jBNuevoActionPerformed
 
 
