@@ -127,20 +127,13 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         ArrayList <Materia> listarMaterias = (ArrayList <Materia>) md.listarMateria();
         
         InscripcionData id = new InscripcionData();
-        List <Alumno> obtenerAlumnosXMateria = id.obtenerAlumnoXMateria(WIDTH);
+        List <Alumno> obtenerAlumnosXMateria = id.obtenerAlumnosXMateria();
         
-                
-        Materia MateriaSelecionada = (Materia) jCBSeleccioneMateria.getSelectedItem();
+        Materia materiaSelecionada = (Materia) jCBSeleccioneMateria.getSelectedItem();
         md.listarMateria();
         
-        
-        
-            for(Alumno alu:id.obtenerAlumnoXMateria(WIDTH)){
-                modelo.addRow(new Object[]{
-                    alu.getIdAlumno(),
-                    alu.getDni(),
-                    alu.getApellido(),
-                    alu.getNombre()});
+            for(Alumno alu:id.obtenerAlumnosXMateria()){
+                modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getApellido(), alu.getNombre()});
             }
             
     }//GEN-LAST:event_jCBSeleccioneMateriaActionPerformed
