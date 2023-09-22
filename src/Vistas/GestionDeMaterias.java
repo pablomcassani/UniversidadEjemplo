@@ -208,16 +208,24 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
             MenuPrincipal.ListaMaterias.add(new Materia(Codigo,Nombre,Año,Estado));   
             MateriaData md = new MateriaData();
             Materia Materia = new Materia(Codigo,Nombre,Año,Estado);
-            md.guardarMateria(Materia);
-            for(Materia mat: ListaMaterias){
-                System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");
-          }
-            md.modificarMateria(Materia);
+            String sql = "SELECT * FROM `materia` WHERE Nombre = 'laboratorio 5';";
+            
+            if(Materia!=sql){
+                md.guardarMateria(Materia);
+                for(Materia mat: ListaMaterias){
+                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");
+                }
+            } else {
+                if(Materia=sql){
+                    md.modificarMateria(Materia);
             for(Materia mat: ListaMaterias){
                 System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
+                }
+            }
+            
         }
         } catch (SQLException ex) {
-            Logger.getLogger(GestionDeMaterias.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a Materia"+ex.getMessage());
         }
         
             

@@ -245,10 +245,9 @@ LocalDate fechaNac;
       for(Alumno alum: ListaAlumno){        
                System.out.println("Alumno: "+alum.getApellido()+" "+alum.getNombre()+" "+alum.getFechaNac()+" "+alum.getDni()+" "+" Guardado con éxito");
       }
-   }
-catch(Exception ex){
-    JOptionPane.showMessageDialog(this, "Al menos uno de los datos ingresados fue incorrecto, intente de vuelta.");
-       System.out.println(ex.getMessage());
+   } catch(Exception ex){
+        JOptionPane.showMessageDialog(this, "Al menos uno de los datos ingresados fue incorrecto, intente de vuelta.");
+        System.out.println(ex.getMessage());
    }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
