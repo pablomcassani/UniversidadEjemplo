@@ -206,9 +206,9 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         
             MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
             MateriaData md = new MateriaData();
-            Materia Materia = new Materia(codigo,nombre,año,estado);
+            Materia materia = new Materia(codigo,nombre,año,estado);
                           
-                md.modificarMateria(Materia);
+                md.modificarMateria(materia);
                 for(Materia mat: ListaMaterias){
                     System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
                 }
@@ -228,10 +228,10 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         
             MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
             MateriaData md = new MateriaData();
-            Materia Materia = new Materia(codigo,nombre,año,estado);
+            Materia materia = new Materia(codigo,nombre,año,estado);
                        
                 
-                md.guardarMateria(Materia);
+                md.guardarMateria(materia);
                 for(Materia mat: ListaMaterias){
                     System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");    
                 }
