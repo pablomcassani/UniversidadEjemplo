@@ -198,7 +198,6 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try {
-        
         int codigo = Integer.parseInt(jTCodigo.getText());
         String nombre = jTNombre.getText();
         int año = Integer.parseInt(jTAño.getText());
@@ -220,7 +219,6 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         try {
-        
         int codigo = Integer.parseInt(jTCodigo.getText());
         String nombre = jTNombre.getText();
         int año = Integer.parseInt(jTAño.getText());
