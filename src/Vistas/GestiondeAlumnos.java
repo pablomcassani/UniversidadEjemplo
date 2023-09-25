@@ -218,7 +218,7 @@ LocalDate fechaNac;
      alu.buscarAlumnoPorDni(idBuscar);
      }
              }catch(NumberFormatException ex){
-             JOptionPane.showMessageDialog(this, "Datos ingresados incorrectos, intente de vuelta.");
+             JOptionPane.showMessageDialog(this, "Datos ingresados incorrectos, intente otra vez.");
       }   
 
 
@@ -241,7 +241,7 @@ LocalDate fechaNac;
         MenuPrincipal.ListaAlumno.add(new Alumno(documento,apellido,nombre,fechaNac,activo));
        Alumno alumno = new Alumno(documento,apellido,nombre,fechaNac,activo);
           AlumnoData alu = new AlumnoData();
-           alu.guardarAlumno(alumno);
+         alu.guardarAlumno(alumno);
       for(Alumno alum: ListaAlumno){        
                System.out.println("Alumno: "+alum.getApellido()+" "+alum.getNombre()+" "+alum.getFechaNac()+" "+alum.getDni()+" "+" Guardado con éxito");
       }

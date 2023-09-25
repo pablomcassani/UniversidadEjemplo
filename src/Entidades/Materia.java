@@ -57,7 +57,7 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia: "+ nombre;
+        return nombre;
     }
     
 }

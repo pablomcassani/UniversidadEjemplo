@@ -136,6 +136,7 @@ public class Pruebas {    public static void main(String[] args) throws SQLExcep
 //            System.out.println("id "+materia.getIdMateria());
 //            System.out.println("nombre: "+materia.getNombre());
 //            System.out.println("año: " +materia.getAnioMateria());
+
         //Prueba de materias no cursadas por id de alumno    
 //    InscripcionData insdata = new InscripcionData();
 //   

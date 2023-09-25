@@ -116,7 +116,7 @@ public class MateriaData {
                materia.setActivo(rs.getBoolean("estado"));
                materias.add(materia);                       
                
-               JOptionPane.showMessageDialog(null, materia.toString());
+//               JOptionPane.showMessageDialog(null, materia.toString());
             }
             ps.close();
         } catch(SQLException ex){
