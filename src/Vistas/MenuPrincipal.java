@@ -49,12 +49,7 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        ImageIcon icono = new ImageIcon(getClass().getResource("/Recursos/Fondo.jpg"));
-        Image miImagen = icono.getImage();
         jDEscritorio = new javax.swing.JDesktopPane(){
-            public void paintComponent(Graphics g){
-                g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
-            }
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMFormularioDeAlumnos = new javax.swing.JMenu();
