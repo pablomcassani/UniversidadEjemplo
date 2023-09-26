@@ -145,19 +145,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         
-        InscripcionData id = new InscripcionData();
-        List <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas(WIDTH);
-        
-        AlumnoData ad = new AlumnoData();
-        ArrayList <Alumno> ListarAlumnos = (ArrayList <Alumno>) ad.listarAlumnos();
-        
-        Alumno AlumnoSelecionado = (Alumno) jCBAlumno.getSelectedItem();
-        
-        
-        
-            for(Materia mat:id.obtenerMateriasCursadas(WIDTH)){
-                modelo.addRow(new object[]{mat.getIdMateria(),mat.getNombre()});
-            }
+
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
