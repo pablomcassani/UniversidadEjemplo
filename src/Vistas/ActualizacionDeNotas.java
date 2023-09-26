@@ -11,6 +11,7 @@ import Entidades.Alumno;
 import Entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -153,8 +154,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         
         Alumno AlumnoSelecionado = (Alumno) jCBAlumno.getSelectedItem();
         
-        
-        
             for(Materia mat:id.obtenerMateriasCursadas(WIDTH)){
                 modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre()});
             }
@@ -182,4 +181,4 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         jTNotaMateria.setModel(modelo);
     }
 
-}
+    }

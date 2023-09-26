@@ -9,25 +9,13 @@ import Datos.MateriaData;
 import Entidades.Materia;
 import static Vistas.MenuPrincipal.ListaMaterias;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author nacho
- */
 public class GestionDeMaterias extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form GestionDeMaterias
-     */
     public GestionDeMaterias() {
         initComponents();
     }
-
     
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,17 +190,14 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         String nombre = jTNombre.getText();
         int año = Integer.parseInt(jTAño.getText());
         boolean estado = jRBEstado.isSelected();
-        
             MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
             MateriaData md = new MateriaData();
             Materia materia = new Materia(codigo,nombre,año,estado);
-                          
                 md.modificarMateria(materia);
                 for(Materia mat: ListaMaterias){
                     System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
                 }
-            
-        } catch (NumberFormatException ex){
+            } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero: "+ex.getMessage());
         }        
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -223,18 +208,14 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         String nombre = jTNombre.getText();
         int año = Integer.parseInt(jTAño.getText());
         boolean estado = jRBEstado.isSelected();
-        
             MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
             MateriaData md = new MateriaData();
             Materia materia = new Materia(codigo,nombre,año,estado);
-                       
-                
                 md.guardarMateria(materia);
                 for(Materia mat: ListaMaterias){
                     System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");    
                 }
-                
-        } catch (SQLException ex) {
+            } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a Materia "+ex.getMessage());
         } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Debe ingresar un numero: "+ex.getMessage());
