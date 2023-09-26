@@ -7,7 +7,9 @@ package Vistas;
 
 import Datos.AlumnoData;
 import Datos.InscripcionData;
+import Datos.MateriaData;
 import Entidades.Alumno;
+import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +21,24 @@ import javax.swing.table.DefaultTableModel;
  * @author nacho
  */
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
-    private DefaultTableModel modelo = new DefaultTableModel();
-    /**
-     * Creates new form ActualisacionDeNotas
-     */
+    
+    private List<Alumno>listaA;
+    private List<Inscripcion>listaI;
+    
+    private DefaultTableModel modelo;
+    private InscripcionData inscData;
+    private MateriaData mData;
+    private AlumnoData aData;
+    
     public ActualizacionDeNotas() {
         initComponents();
+        
+        aData = new AlumnoData();
+        listaA = aData.listarAlumnos();
+        modelo = new DefaultTableModel();
+        inscData = new InscripcionData();
+        mData= new MateriaData();
+        cargaAlumnos();
         armarCabesera();
     }
 
@@ -146,17 +160,9 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
         
-        InscripcionData id = new InscripcionData();
-        List <Materia> obtenerMateriasCursadas = id.obtenerMateriasCursadas(WIDTH);
-        
-        AlumnoData ad = new AlumnoData();
-        ArrayList <Alumno> ListarAlumnos = (ArrayList <Alumno>) ad.listarAlumnos();
-        
-        Alumno AlumnoSelecionado = (Alumno) jCBAlumno.getSelectedItem();
-        
-            for(Materia mat:id.obtenerMateriasCursadas(WIDTH)){
-                modelo.addRow(new Object[]{mat.getIdMateria(),mat.getNombre()});
-            }
+        borrarFilasTabla();
+        mostrarNotas();
+          
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
@@ -166,7 +172,7 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JComboBox<String> jCBAlumno;
+    private javax.swing.JComboBox<Alumno> jCBAlumno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jSalir;
@@ -175,10 +181,36 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void armarCabesera(){
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Nota");
+        ArrayList<Object>filaCabesera = new ArrayList<>();
+        filaCabesera.add("Codigo");
+        filaCabesera.add("Nombre");
+        filaCabesera.add("Nota");
+        for(Object it:filaCabesera){
+            modelo.addColumn(it);
+        }
         jTNotaMateria.setModel(modelo);
     }
 
+    private void cargaAlumnos() {
+        for(Alumno item:listaA){
+            jCBAlumno.addItem(item);
+        }
+    }
+
+    private void mostrarNotas(){
+        Inscripcion selec = (Inscripcion) jCBAlumno.getSelectedItem();
+        listaI = (ArrayList)inscData.obtenerMateriasCursadas(selec.getIdInscripcion());
+        
+        for(Inscripcion i:listaI){
+            modelo.addRow(new Object[]{i.getIdInscripcion(), i.getMateria(), i.getNota()});
+        }
+    }
+    
+        private void borrarFilasTabla(){
+            int indice = modelo .getRowCount()-1;
+            
+            for(int i = indice;i>=0;i--){
+                modelo.removeRow(i);
+            }
+        }
     }
