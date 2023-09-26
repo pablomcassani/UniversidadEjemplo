@@ -147,6 +147,12 @@ private void cargarCombo(){
  
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
 
+        materia = (Materia) comboModel.getSelectedItem();
+ 
+        for (Alumno alum : insdata.obtenerAlumnoXMateria(materia.getIdMateria())) {
+
+            modelo.addRow(new Object[]{alum.getIdAlumno(), alum.getDni(), alum.getApellido(), alum.getNombre()}); 
+        }
 
       
     }//GEN-LAST:event_jcbMateriasActionPerformed
@@ -156,16 +162,23 @@ private void cargarCombo(){
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jcbMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriasItemStateChanged
-
-        materia = (Materia) comboModel.getSelectedItem();
-
-        for (Alumno alum : insdata.obtenerAlumnoXMateria(materia.getIdMateria())) {
-
-            modelo.addRow(new Object[]{alum.getIdAlumno(), alum.getDni(), alum.getApellido(), alum.getNombre()});
-
-        }
+//        materia = (Materia) comboModel.getSelectedItem();
+////        borrarFilas();
+////        borrarFilas();
+//        for (Alumno alum : insdata.obtenerAlumnoXMateria(materia.getIdMateria())) {
+//
+//            modelo.addRow(new Object[]{alum.getIdAlumno(), alum.getDni(), alum.getApellido(), alum.getNombre()}); 
+//        }
+//
+//    
     }//GEN-LAST:event_jcbMateriasItemStateChanged
-
+//private void borrarFilas(){
+//    int filas = jtAlumnos.getRowCount()-1;
+//    for(int f = filas; f>0 ; f--){
+//        modelo.removeRow(f);
+//    }
+    
+//}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;

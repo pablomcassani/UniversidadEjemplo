@@ -44,7 +44,7 @@ public class Alumno  implements Comparable<Alumno>{
         return dni;
     }
 
-    public void setDni (int Dni) {
+    public void setDni (int dni) {
         this.dni = dni;
     }
     public String getApellido() {

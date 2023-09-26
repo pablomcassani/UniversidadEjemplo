@@ -6,8 +6,19 @@
 package Vistas;
 
 import Datos.MateriaData;
+
 import Entidades.Materia;
 
+import  Vistas.MenuPrincipal;
+import static Vistas.MenuPrincipal.ListaMaterias;
+
+import java.sql.SQLException;
+
+import java.util.logging.Level;
+
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 /**
  *
  * @author nacho
@@ -37,11 +48,11 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTCodigo = new javax.swing.JTextField();
+        jTNombre = new javax.swing.JTextField();
+        jTAño = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jRBEstado = new javax.swing.JRadioButton();
         jBNuevo = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
@@ -125,13 +136,13 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5))
                                 .addGap(26, 26, 26)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2)
+                                    .addComponent(jTNombre)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jRadioButton1)
+                                            .addComponent(jTAño, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jRBEstado)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(53, 53, 53)
                                                 .addComponent(jBBuscar)))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
@@ -150,20 +161,20 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscar))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jRadioButton1))
+                    .addComponent(jRBEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
@@ -177,8 +188,13 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int idEliminar;
+
+        idEliminar =  Integer.parseInt(JOptionPane.showInputDialog(this,"Introduzca el codigo de la materia a borrar"));
+
         MateriaData md = new MateriaData();
-        md.eliminarMateria(WIDTH);
+
+        md.eliminarMateria(idEliminar);
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -186,23 +202,58 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        int idBuscar;
+try{
+        idBuscar =  Integer.parseInt(JOptionPane.showInputDialog(this,"Introduzca el codigo de la materia que buscas"));
+
         MateriaData md = new MateriaData();
-        md.buscarMateria(WIDTH);
+
+        md.buscarMateria(idBuscar);
+        }catch (NumberFormatException ex){
+    JOptionPane.showMessageDialog(this, "código incorrecto, intente otra vez."+ex.getMessage());
+}
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        MateriaData md = new MateriaData();
-        md.guardarMateria(Materia materia);
-        
-        if(Materia){
-            md.modificarMateria(Materia materia);
-        }    
+ 
+        try {
+
+        int codigo = Integer.parseInt(jTCodigo.getText());
+
+        String nombre = jTNombre.getText();
+
+        int año = Integer.parseInt(jTAño.getText());
+
+        boolean estado = jRBEstado.isSelected();
+
+            MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
+
+            MateriaData md = new MateriaData();
+
+            Materia materia = new Materia(codigo,nombre,año,estado);
+
+                md.guardarMateria(materia);
+
+                for(Materia mat: ListaMaterias){
+
+                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
+
+                }
+
+            } catch (Exception ex){
+
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero: "+ex.getMessage());
+
+        }       
+
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
+  jTCodigo.setText(" ");
+  jTNombre.setText(" ");
+  jTAño.setText(" ");
+  
+  
     }//GEN-LAST:event_jBNuevoActionPerformed
 
 
@@ -218,10 +269,10 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRBEstado;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTAño;
+    private javax.swing.JTextField jTCodigo;
+    private javax.swing.JTextField jTNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import Vistas.GestiondeAlumnos;
 import Vistas.ConsulltaDeAlumnosPorMateria;
 import Vistas.ActualizacionDeNotas;
 import Entidades.Alumno;
+import Entidades.Materia;
 import java.awt.Color;
 import static java.awt.Color.yellow;
 import java.awt.Graphics;
@@ -24,6 +25,7 @@ import javax.swing.ImageIcon;
  */
 public class MenuPrincipal extends javax.swing.JFrame{
 public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
+public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
     /**
      * Creates new form MenuPrincipal
      */
@@ -52,10 +54,10 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
         jDEscritorio = new javax.swing.JDesktopPane(){
         };
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMFormularioDeAlumnos = new javax.swing.JMenu();
+        jMFormularioDeAlumnos1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMFormularioDeMateria = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMFormularioDeMateria1 = new javax.swing.JMenu();
+        jmFormularioMateria = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMManejoDeInscripcioes = new javax.swing.JMenuItem();
         jMManipulacionDeNotas = new javax.swing.JMenuItem();
@@ -96,13 +98,13 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
 
         jMenuBar1.setBackground(java.awt.Color.white);
 
-        jMFormularioDeAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/alumno_1.png"))); // NOI18N
-        jMFormularioDeAlumnos.setText("Alumno");
-        jMFormularioDeAlumnos.setContentAreaFilled(false);
-        jMFormularioDeAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMFormularioDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
+        jMFormularioDeAlumnos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/alumno_1.png"))); // NOI18N
+        jMFormularioDeAlumnos1.setText("Alumno");
+        jMFormularioDeAlumnos1.setContentAreaFilled(false);
+        jMFormularioDeAlumnos1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMFormularioDeAlumnos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMFormularioDeAlumnosActionPerformed(evt);
+                jMFormularioDeAlumnos1ActionPerformed(evt);
             }
         });
 
@@ -112,27 +114,27 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMFormularioDeAlumnos.add(jMenuItem2);
+        jMFormularioDeAlumnos1.add(jMenuItem2);
 
-        jMenuBar1.add(jMFormularioDeAlumnos);
+        jMenuBar1.add(jMFormularioDeAlumnos1);
 
-        jMFormularioDeMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/materia_1.png"))); // NOI18N
-        jMFormularioDeMateria.setText("Materia");
-        jMFormularioDeMateria.addActionListener(new java.awt.event.ActionListener() {
+        jMFormularioDeMateria1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/materia_1.png"))); // NOI18N
+        jMFormularioDeMateria1.setText("Materia");
+        jMFormularioDeMateria1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMFormularioDeMateriaActionPerformed(evt);
+                jMFormularioDeMateria1ActionPerformed(evt);
             }
         });
 
-        jMenuItem3.setText("Formulario de Materia");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmFormularioMateria.setText("Formulario de Materia");
+        jmFormularioMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmFormularioMateriaActionPerformed(evt);
             }
         });
-        jMFormularioDeMateria.add(jMenuItem3);
+        jMFormularioDeMateria1.add(jmFormularioMateria);
 
-        jMenuBar1.add(jMFormularioDeMateria);
+        jMenuBar1.add(jMFormularioDeMateria1);
 
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/administracion_1.png"))); // NOI18N
         jMenu8.setText("Administracion");
@@ -193,29 +195,28 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMFormularioDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeAlumnosActionPerformed
-        jDEscritorio.removeAll();
-        jDEscritorio.repaint();
-        GestiondeAlumnos gda = new GestiondeAlumnos();
-        gda.setVisible(true);
-        gda.getContentPane().setBackground(yellow);
-        jDEscritorio.add(gda);
-        jDEscritorio.moveToFront(gda);
-        
-    }//GEN-LAST:event_jMFormularioDeAlumnosActionPerformed
-
-    private void jMFormularioDeMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeMateriaActionPerformed
+    private void jmFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmFormularioMateriaActionPerformed
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         GestionDeMaterias gdm = new GestionDeMaterias();
         gdm.setVisible(true);
         jDEscritorio.add(gdm);
         jDEscritorio.moveToFront(gdm);
-    }//GEN-LAST:event_jMFormularioDeMateriaActionPerformed
+    }//GEN-LAST:event_jmFormularioMateriaActionPerformed
+
+    private void jMFormularioDeAlumnos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeAlumnos1ActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        GestiondeAlumnos gda = new GestiondeAlumnos();
+        gda.setVisible(true);
+        jDEscritorio.add(gda);
+        jDEscritorio.moveToFront(gda);
+        
+    }//GEN-LAST:event_jMFormularioDeAlumnos1ActionPerformed
+
+    private void jMFormularioDeMateria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMFormularioDeMateria1ActionPerformed
+
+    }//GEN-LAST:event_jMFormularioDeMateria1ActionPerformed
 
     private void jMManejoDeInscripcioesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMManejoDeInscripcioesActionPerformed
         jDEscritorio.removeAll();
@@ -236,12 +237,7 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
     }//GEN-LAST:event_jMManipulacionDeNotasActionPerformed
 
     private void jMAlumnosPorMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlumnosPorMateriaActionPerformed
-        jDEscritorio.removeAll();
-        jDEscritorio.repaint();
-        ConsulltaDeAlumnosPorMateria cdapm = new ConsulltaDeAlumnosPorMateria();
-        cdapm.setVisible(true);
-        jDEscritorio.add(cdapm);
-        jDEscritorio.moveToFront(cdapm);
+
     }//GEN-LAST:event_jMAlumnosPorMateriaActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -302,8 +298,8 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDEscritorio;
     private javax.swing.JMenu jMAlumnosPorMateria;
-    private javax.swing.JMenu jMFormularioDeAlumnos;
-    private javax.swing.JMenu jMFormularioDeMateria;
+    private javax.swing.JMenu jMFormularioDeAlumnos1;
+    private javax.swing.JMenu jMFormularioDeMateria1;
     private javax.swing.JMenuItem jMManejoDeInscripcioes;
     private javax.swing.JMenuItem jMManipulacionDeNotas;
     private javax.swing.JMenu jMenu1;
@@ -317,8 +313,8 @@ public static ArrayList<Alumno>ListaAlumno = new ArrayList<>();
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jmAlumnosPorMateria;
+    private javax.swing.JMenuItem jmFormularioMateria;
     // End of variables declaration//GEN-END:variables
 
 
