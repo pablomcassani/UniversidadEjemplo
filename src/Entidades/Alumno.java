@@ -44,7 +44,7 @@ public class Alumno  implements Comparable<Alumno>{
         return dni;
     }
 
-    public void setDni (int Dni) {
+    public void setDni (int dni) {
         this.dni = dni;
     }
     public String getApellido() {
@@ -81,7 +81,7 @@ public class Alumno  implements Comparable<Alumno>{
 
     @Override
     public String toString() {
-        return dni+", "+ apellido +", "+  nombre ;
+        return "Alumno{" + "idAlumno=" + idAlumno + ", apellido=" + apellido + ", nombre=" + nombre + '}';
     }
 
     @Override

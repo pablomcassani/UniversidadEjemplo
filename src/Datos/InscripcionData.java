@@ -99,9 +99,7 @@ public InscripcionData(){
         
     }
 
-    public ArrayList<Alumno> obtenerAlumnosXMateria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
  
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
         String sql = "DELETE FROM inscripcion WHERE idAlumno = ? and idMateria = ?";
@@ -192,6 +190,7 @@ public List<Alumno> obtenerAlumnoXMateria(int idMateria){
           while(rs.next()){
           Alumno alumno = new Alumno();
           alumno.setIdAlumno(rs.getInt("idAlumno"));
+          alumno.setDni(rs.getInt("dni"));
           alumno.setApellido(rs.getString("apellido"));
           alumno.setNombre(rs.getString("nombre"));
           alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());

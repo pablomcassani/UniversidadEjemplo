@@ -12,6 +12,7 @@ import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
@@ -22,19 +23,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     
-    private List<Alumno>listaA;
-    private List<Inscripcion>listaI;
+    private final ArrayList<Alumno>listaA;
+    private ArrayList<Inscripcion>listaI;
     
-    private DefaultTableModel modelo;
-    private InscripcionData inscData;
-    private MateriaData mData;
-    private AlumnoData aData;
+    private final DefaultTableModel modelo;
+    private final InscripcionData inscData;
+    private final MateriaData mData;
+    private final AlumnoData aData;
     
     public ActualizacionDeNotas() {
         initComponents();
         
         aData = new AlumnoData();
-        listaA = aData.listarAlumnos();
+        listaA = (ArrayList<Alumno>) aData.listarAlumnos();
         modelo = new DefaultTableModel();
         inscData = new InscripcionData();
         mData= new MateriaData();
@@ -162,7 +163,8 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         
         borrarFilasTabla();
         mostrarNotas();
-          
+        
+        
     }//GEN-LAST:event_jCBAlumnoActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
@@ -181,14 +183,10 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void armarCabesera(){
-        ArrayList<Object>filaCabesera = new ArrayList<>();
-        filaCabesera.add("Codigo");
-        filaCabesera.add("Nombre");
-        filaCabesera.add("Nota");
-        for(Object it:filaCabesera){
-            modelo.addColumn(it);
-        }
-        jTNotaMateria.setModel(modelo);
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nota");
+       jTNotaMateria.setModel(modelo);
     }
 
     private void cargaAlumnos() {

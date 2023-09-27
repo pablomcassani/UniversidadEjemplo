@@ -56,7 +56,7 @@ public class MateriaData {
             materia.setNombre(rs.getString("nombre"));
             materia.setAnioMateria(rs.getInt("año"));
             materia.setActivo(true);
-//            JOptionPane.showMessageDialog(null, materia.toString());
+            JOptionPane.showMessageDialog(null, materia.toString());
         }else {
                 JOptionPane.showMessageDialog(null, "No está anotado a materia");
                 }
@@ -95,6 +95,8 @@ public class MateriaData {
             
             if(fila == 1){
                 JOptionPane.showMessageDialog(null," Se eliminó la materia.");
+            }else{
+                  JOptionPane.showMessageDialog(null," No se encontró Materia con ese código.");
             }
             ps.close();
         } catch (SQLException e){
@@ -116,7 +118,7 @@ public class MateriaData {
                materia.setActivo(rs.getBoolean("estado"));
                materias.add(materia);                       
                
-               JOptionPane.showMessageDialog(null, materia.toString());
+//               JOptionPane.showMessageDialog(null, materia.toString());
             }
             ps.close();
         } catch(SQLException ex){

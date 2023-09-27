@@ -55,6 +55,7 @@ public AlumnoData(){
             if(rs.next()){
             alumno = new  Alumno();
             alumno.setIdAlumno(id);
+            alumno.setDni(rs.getInt("dni"));
             alumno.setApellido(rs.getString("apellido"));
             alumno.setNombre(rs.getString("nombre"));
             alumno.setFechaNac(rs.getDate("FechaNacimiento").toLocalDate());
@@ -113,7 +114,7 @@ public AlumnoData(){
                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                alumno.setActivo(rs.getBoolean("estado"));
                alumnos.add(alumno);                       
-                   JOptionPane.showMessageDialog(null,alumno.toString());
+//                   JOptionPane.showMessageDialog(null,alumno.toString());
             }
             ps.close();
         } catch(SQLException ex){
