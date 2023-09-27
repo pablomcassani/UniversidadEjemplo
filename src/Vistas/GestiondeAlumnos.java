@@ -34,6 +34,7 @@ LocalDate fechaNac;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -44,6 +45,7 @@ LocalDate fechaNac;
         jtfDocumento = new javax.swing.JTextField();
         jtfApellido = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
+        jdcFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jrbEstado = new javax.swing.JRadioButton();
         jBNuievo = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
@@ -68,6 +70,12 @@ LocalDate fechaNac;
         jLabel5.setText("Estado:");
 
         jLabel6.setText("Fecha de Nacimiento:");
+
+        jdcFechaNacimiento.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdcFechaNacimientoPropertyChange(evt);
+            }
+        });
 
         jBNuievo.setText("Nuevo");
         jBNuievo.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +130,7 @@ LocalDate fechaNac;
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jrbEstado)
                                     .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +189,8 @@ LocalDate fechaNac;
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jrbEstado)
-                        .addGap(36, 36, 36)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuievo)
@@ -264,6 +274,7 @@ LocalDate fechaNac;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuievo;
     private javax.swing.JButton jBSalir;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -271,6 +282,7 @@ LocalDate fechaNac;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private com.toedter.calendar.JDateChooser jdcFechaNacimiento;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfDocumento;
