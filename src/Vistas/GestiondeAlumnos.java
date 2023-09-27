@@ -14,6 +14,7 @@ import Entidades.Alumno;
 import static Vistas.MenuPrincipal.ListaAlumno;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import static java.time.temporal.TemporalQueries.zoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -30,6 +31,7 @@ String apellido;
 String nombre;
 boolean activo;
 LocalDate fechaNac;
+private Alumno alumnoActual = null;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,7 +49,7 @@ LocalDate fechaNac;
         jtfNombre = new javax.swing.JTextField();
         jdcFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jrbEstado = new javax.swing.JRadioButton();
-        jBNuievo = new javax.swing.JButton();
+        jBNuevo = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
@@ -77,10 +79,10 @@ LocalDate fechaNac;
             }
         });
 
-        jBNuievo.setText("Nuevo");
-        jBNuievo.addActionListener(new java.awt.event.ActionListener() {
+        jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBNuievoActionPerformed(evt);
+                jBNuevoActionPerformed(evt);
             }
         });
 
@@ -144,7 +146,7 @@ LocalDate fechaNac;
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jBNuievo)
+                        .addComponent(jBNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(jBEliminar)
                         .addGap(18, 18, 18)
@@ -193,7 +195,7 @@ LocalDate fechaNac;
                         .addComponent(jdcFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBNuievo)
+                    .addComponent(jBNuevo)
                     .addComponent(jBEliminar)
                     .addComponent(jBGuardar)
                     .addComponent(jBSalir))
@@ -204,18 +206,35 @@ LocalDate fechaNac;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-            int idBuscar;
+         
             AlumnoData alu = new AlumnoData();
      try{
          
        
-     idBuscar =  Integer.parseInt(JOptionPane.showInputDialog(this,"Introduzca el id o dni del alumno a buscar"));
-   
+     Integer idBuscar =  Integer.parseInt(jtfDocumento.getText());
+     
+     if(idBuscar <99){
+         
+    alumnoActual = alu.buscarAlumno(idBuscar);
       
-     if(idBuscar > 0 && idBuscar <99){
-     alu.buscarAlumno(idBuscar);
-     }else{
-     alu.buscarAlumnoPorDni(idBuscar);
+     if(alumnoActual != null){
+
+     jtfApellido.setText(alumnoActual.getApellido());
+     jtfNombre.setText(alumnoActual.getNombre());
+     jrbEstado.setSelected(alumnoActual.isActivo());
+     LocalDate lc = alumnoActual.getFechaNac();
+     java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+     jdcFechaNacimiento.setDate(date);
+     }
+       } else{
+     
+     alumnoActual = alu.buscarAlumnoPorDni(idBuscar);
+     jtfApellido.setText(alumnoActual.getApellido());
+     jtfNombre.setText(alumnoActual.getNombre());
+     jrbEstado.setSelected(alumnoActual.isActivo());
+     LocalDate lc = alumnoActual.getFechaNac();
+     java.util.Date date = java.util.Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+     jdcFechaNacimiento.setDate(date); 
      }
              }catch(NumberFormatException ex){
              JOptionPane.showMessageDialog(this, "Datos ingresados incorrectos, intente otra vez.");
@@ -236,8 +255,12 @@ LocalDate fechaNac;
         documento = Integer.parseInt(jtfDocumento.getText());
         apellido = jtfApellido.getText();
         nombre = jtfNombre.getText();
+        if(apellido.isEmpty()|| nombre.isEmpty()){
+            JOptionPane.showMessageDialog(this, "No pueden haber campos vacíos.");
+            return;
+        }
         activo = jrbEstado.isSelected();
-        
+
         MenuPrincipal.ListaAlumno.add(new Alumno(documento,apellido,nombre,fechaNac,activo));
        Alumno alumno = new Alumno(documento,apellido,nombre,fechaNac,activo);
           AlumnoData alu = new AlumnoData();
@@ -252,11 +275,12 @@ catch(Exception ex){
    }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jBNuievoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuievoActionPerformed
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         jtfDocumento.setText("");
         jtfApellido.setText("");
         jtfNombre.setText("");       
-    }//GEN-LAST:event_jBNuievoActionPerformed
+        alumnoActual = null;
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
@@ -273,7 +297,7 @@ catch(Exception ex){
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBNuievo;
+    private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;

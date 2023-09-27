@@ -218,7 +218,6 @@ try{
  
         try {
 
-        int codigo = Integer.parseInt(jTCodigo.getText());
 
         String nombre = jTNombre.getText();
 
@@ -226,17 +225,17 @@ try{
 
         boolean estado = jRBEstado.isSelected();
 
-            MenuPrincipal.ListaMaterias.add(new Materia(codigo,nombre,año,estado));   
+            MenuPrincipal.ListaMaterias.add(new Materia(nombre,año,estado));   
 
             MateriaData md = new MateriaData();
 
-            Materia materia = new Materia(codigo,nombre,año,estado);
+            Materia materia = new Materia(nombre,año,estado);
 
                 md.guardarMateria(materia);
 
                 for(Materia mat: ListaMaterias){
 
-                    System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
+                    System.out.println("Materia: "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
 
                 }
 

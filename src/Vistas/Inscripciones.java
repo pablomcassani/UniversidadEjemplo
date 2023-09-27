@@ -9,6 +9,7 @@ import Datos.AlumnoData;
 import Datos.InscripcionData;
 import Datos.MateriaData;
 import Entidades.Alumno;
+import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Inscripciones extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
-    private ArrayList<Materia> listaM;
-    private ArrayList<Alumno> listaA;
+    private List<Materia> listaM;
+    private List<Alumno> listaA;
     
     private InscripcionData insData;
     private MateriaData mData;
@@ -48,7 +49,7 @@ public class Inscripciones extends javax.swing.JInternalFrame {
 public void FormularioInscripcion(){
     initComponents();
     aData = new AlumnoData();
-    listaA = (ArrayList<Alumno>)aData.listarAlumnos();
+    listaA = aData.listarAlumnos();
     modelo = new DefaultTableModel();
     mData= new MateriaData();
     cargarAlumnos();
@@ -58,14 +59,14 @@ public void FormularioInscripcion(){
 
 }
 private void borrarFilaTabla(){
-    int indice = modelo.getColumnCount()-1;
+    int indice = modelo.getRowCount()-1;
     
     for(int i = indice; i >= 0; i--){
         modelo.removeRow(i);
     }
 }
 private void cargarDatosNoInscriptas(){
-//    borrarFilaTabla();
+    borrarFilaTabla();
     Alumno selec= (Alumno)jcbAlumno.getSelectedItem();
     listaM =  (ArrayList<Materia>) insData.obtenerMateriasNoCursadas(selec.getIdAlumno());
     for(Materia m: listaM){
@@ -73,7 +74,7 @@ private void cargarDatosNoInscriptas(){
     }
 }
 private void cargarDatosInscriptas(){
-//    borrarFilaTabla();
+    borrarFilaTabla();
     Alumno selec= (Alumno)jcbAlumno.getSelectedItem();
     List<Materia> lista  = insData.obtenerMateriasCursadas(selec.getIdAlumno());
     for(Materia m: lista){
@@ -127,11 +128,18 @@ private void cargarDatosInscriptas(){
 
         jLabel3.setText("Seleccione un Alumno:");
 
+        jcbAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbAlumnoActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("Listado de Materias:");
 
         MateriasInscriptasNoInscriptas.add(jrbMateriasInscriptas);
         jrbMateriasInscriptas.setText("Materias Inscriptas");
+        jrbMateriasInscriptas.setFocusCycleRoot(true);
         jrbMateriasInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbMateriasInscriptasActionPerformed(evt);
@@ -160,6 +168,7 @@ private void cargarDatosInscriptas(){
         jScrollPane2.setViewportView(jTable);
 
         jbInscribir.setText("Inscribir");
+        jbInscribir.setEnabled(false);
         jbInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbInscribirActionPerformed(evt);
@@ -167,6 +176,7 @@ private void cargarDatosInscriptas(){
         });
 
         jbAnularInscripcion.setText("Anular inscripsion");
+        jbAnularInscripcion.setEnabled(false);
         jbAnularInscripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAnularInscripcionActionPerformed(evt);
@@ -257,30 +267,56 @@ private void cargarDatosInscriptas(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
- 
+        int filaSeleccionada= jTable.getSelectedRow();
+        if(filaSeleccionada !=-1){
+            
+        Alumno a = (Alumno) jcbAlumno.getSelectedItem();
+        
+        int idMateria = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+        String nombreMateria = (String)modelo.getValueAt(filaSeleccionada, 1);
+        int anio = (Integer)modelo.getValueAt(filaSeleccionada, 2);
+        Materia m = new Materia(idMateria,nombreMateria,anio,true);
+        
+        Inscripcion i = new Inscripcion(a,m,0);
+        insData.guardarInscripcion(i);
+    }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jbAnularInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularInscripcionActionPerformed
-        InscripcionData id = new InscripcionData();
-        id.borrarInscripcionMateriaAlumno(WIDTH, WIDTH);
+                int filaSeleccionada= jTable.getSelectedRow();
+        if(filaSeleccionada !=-1){
+             Alumno a = (Alumno) jcbAlumno.getSelectedItem();
+             int idMateria=(Integer)modelo.getValueAt(filaSeleccionada, 0);
+             
+             insData.borrarInscripcionMateriaAlumno(a.getIdAlumno(), idMateria);
+        } 
     }//GEN-LAST:event_jbAnularInscripcionActionPerformed
 
     private void jrbMateriasNoInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasNoInscriptasActionPerformed
- 
+      borrarFilaTabla();
+        jrbMateriasInscriptas.setSelected(false);
+         cargarDatosNoInscriptas();
+         jbAnularInscripcion.setEnabled(false);
+         jbInscribir.setEnabled(true);
    
     }//GEN-LAST:event_jrbMateriasNoInscriptasActionPerformed
 
     private void jrbMateriasInscriptasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMateriasInscriptasActionPerformed
-//          borrarFilaTabla();
-          jrbMateriasNoInscriptas.setSelected(false);
-          cargarDatosInscriptas();
-          jbInscribir.setEnabled(true);
-          jbAnularInscripcion.setEnabled(false);
+        borrarFilaTabla();
+         jrbMateriasNoInscriptas.setSelected(false);
+         cargarDatosInscriptas();
+         jbAnularInscripcion.setEnabled(true);
+         jbInscribir.setEnabled(false);
+       
     }//GEN-LAST:event_jrbMateriasInscriptasActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jcbAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbAlumnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

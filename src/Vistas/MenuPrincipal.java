@@ -177,6 +177,11 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
 
         jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salir_1.png"))); // NOI18N
         jMenu10.setText("Salir");
+        jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu10MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
@@ -257,6 +262,10 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         jDEscritorio.add(cdapm);
         jDEscritorio.moveToFront(cdapm);
     }//GEN-LAST:event_jmAlumnosPorMateriaActionPerformed
+
+    private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
+      this.dispose();
+    }//GEN-LAST:event_jMenu10MouseClicked
 
     /**
      * @param args the command line arguments

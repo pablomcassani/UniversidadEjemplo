@@ -59,7 +59,6 @@ public AlumnoData(){
             alumno.setApellido(rs.getString("apellido"));
             alumno.setNombre(rs.getString("nombre"));
             alumno.setFechaNac(rs.getDate("FechaNacimiento").toLocalDate());
-            alumno.setActivo(true);
             JOptionPane.showMessageDialog(null,alumno.toString());
         }else {
                 JOptionPane.showMessageDialog(null, "No existe el alumno");

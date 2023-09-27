@@ -146,7 +146,7 @@ private void cargarCombo(){
 
  
     private void jcbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMateriasActionPerformed
-
+borrarFilas();
         materia = (Materia) comboModel.getSelectedItem();
  
         for (Alumno alum : insdata.obtenerAlumnoXMateria(materia.getIdMateria())) {
@@ -172,13 +172,13 @@ private void cargarCombo(){
 //
 //    
     }//GEN-LAST:event_jcbMateriasItemStateChanged
-//private void borrarFilas(){
-//    int filas = jtAlumnos.getRowCount()-1;
-//    for(int f = filas; f>0 ; f--){
-//        modelo.removeRow(f);
-//    }
+private void borrarFilas(){
+    int filas = modelo.getRowCount()-1;
+    for(int f = filas; f>0 ; f--){
+        modelo.removeRow(f);
+    }
     
-//}
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;
