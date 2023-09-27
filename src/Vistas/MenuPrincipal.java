@@ -149,6 +149,11 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         jMenuBar1.add(jMenu2);
 
         jMenu10.setText("Salir");
+        jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu10MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
@@ -220,6 +225,10 @@ public static ArrayList<Materia>ListaMaterias = new ArrayList<>();
         jDEscritorio.add(gdm);
         jDEscritorio.moveToFront(gdm);
     }//GEN-LAST:event_jmMateriasActionPerformed
+
+    private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
+      this.dispose();
+    }//GEN-LAST:event_jMenu10MouseClicked
 
     /**
      * @param args the command line arguments

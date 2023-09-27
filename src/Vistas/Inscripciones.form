@@ -156,6 +156,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbAlumnoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -171,6 +174,7 @@
     <Component class="javax.swing.JRadioButton" name="jRadioButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Materias Inscriptas"/>
+        <Property name="focusCycleRoot" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jRadioButton2">
@@ -202,6 +206,7 @@
     <Component class="javax.swing.JButton" name="jBGuardar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inscribir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBGuardarActionPerformed"/>
@@ -210,6 +215,7 @@
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anular inscripsion"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">

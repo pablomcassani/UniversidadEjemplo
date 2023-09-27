@@ -37,6 +37,7 @@ public InscripcionData(){
           ResultSet rs = ps.getGeneratedKeys();
           if(rs.next()){
               inscripcion.setIdInscripcion(rs.getInt(1));
+              JOptionPane.showMessageDialog(null,"Inscripto en materia");
           }else{
               System.out.println("No se pudo obtener ID");
         }

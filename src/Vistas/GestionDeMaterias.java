@@ -195,6 +195,7 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+<<<<<<< HEAD
          try {
         
         int Codigo = Integer.parseInt(jTCodigo.getText());
@@ -211,6 +212,30 @@ public class GestionDeMaterias extends javax.swing.JInternalFrame {
                 md.guardarMateria(Materia);
                 for(Materia mat: ListaMaterias){
                     System.out.println("Materia: "+mat.getIdMateria()+" "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Guardado con éxito");    
+=======
+ 
+        try {
+
+
+        String nombre = jTNombre.getText();
+
+        int año = Integer.parseInt(jTAño.getText());
+
+        boolean estado = jRBEstado.isSelected();
+
+            MenuPrincipal.ListaMaterias.add(new Materia(nombre,año,estado));   
+
+            MateriaData md = new MateriaData();
+
+            Materia materia = new Materia(nombre,año,estado);
+
+                md.guardarMateria(materia);
+
+                for(Materia mat: ListaMaterias){
+
+                    System.out.println("Materia: "+mat.getNombre()+" "+mat.getAnioMateria()+" "+mat.isActivo()+" "+" Modifiicada con Exito");
+
+>>>>>>> ff0d7cf7d5aefd4c48f95d9a86b2dbb6cd6f9797
                 }
                 
         } catch (SQLException ex) {
