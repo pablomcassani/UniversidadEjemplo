@@ -37,7 +37,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         
         aData = new AlumnoData();
         listaA = aData.listarAlumnos();
-        listaM = mData.listarMateria();
         modelo = new DefaultTableModel();
         inscData = new InscripcionData();
         mData= new MateriaData();
@@ -158,7 +157,11 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         
         InscripcionData id =new InscripcionData();
-        id.actualizarNota(WIDTH, WIDTH, WIDTH);
+        Inscripcion ins = new Inscripcion();
+        Alumno alu = new Alumno();
+        Materia mat = new Materia();
+        id.actualizarNota(alu.getIdAlumno(),mat.getIdMateria(),ins.getNota());
+        
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jCBAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAlumnoActionPerformed
@@ -215,4 +218,13 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 modelo.removeRow(i);
             }
         }
+        
+        public boolean isCellEditable(int fila, int columna){
+            if(columna == 3 ){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
     }

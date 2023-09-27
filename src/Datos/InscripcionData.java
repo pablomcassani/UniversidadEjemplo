@@ -23,7 +23,7 @@ public InscripcionData(){
         this.con = miConexion.getConexion();
 }     
     public void guardarInscripcion(Inscripcion inscripcion){
-               String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?,?,?)";
+               String sql = "INSERT INTO inscripción (nota, idAlumno, idMateria) VALUES (?,?,?)";
 
         try{
            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
@@ -47,7 +47,7 @@ public InscripcionData(){
     }
         public List<Inscripcion> obtenerInscripciones(){
        ArrayList<Inscripcion> inscripciones = new ArrayList<>();
-       String sql = "SELECT * FROM inscripcion";
+       String sql = "SELECT * FROM inscripción";
         try{
             
             PreparedStatement ps = con.prepareStatement(sql);
@@ -73,7 +73,7 @@ public InscripcionData(){
     }
         public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
         ArrayList<Inscripcion> inscripcionesPorAlumno = new ArrayList<>();
-        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
+        String sql = "SELECT * FROM inscripción WHERE idAlumno = ?";
         try{
             
             PreparedStatement ps = con.prepareStatement(sql);
@@ -92,7 +92,7 @@ public InscripcionData(){
             }
             ps.close();
         } catch(SQLException |NullPointerException ex){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripcion "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Inscripción "+ex.getMessage());
         }
         return inscripcionesPorAlumno;
         
@@ -102,7 +102,7 @@ public InscripcionData(){
 
  
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-        String sql = "DELETE FROM inscripcion WHERE idAlumno = ? and idMateria = ?";
+        String sql = "DELETE FROM inscripción WHERE idAlumno = ? and idMateria = ?";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlumno);
@@ -119,7 +119,7 @@ public InscripcionData(){
     }
 
    public void actualizarNota(int idAlumno, int idMateria, double nota){
-        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? and idMateria = ?";
+        String sql = "UPDATE inscripción SET nota = ? WHERE idAlumno = ? and idMateria = ?";
         try{
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setDouble(1,nota);
@@ -138,7 +138,7 @@ public InscripcionData(){
 }
 public List<Materia> obtenerMateriasCursadas(int id) {
     ArrayList<Materia> materias = new ArrayList<>();
-    String sql = "SELECT inscripcion.idMateria, nombre, año FROM inscripcion, materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?;";
+    String sql = "SELECT inscripción.idMateria, nombre, año FROM inscripcion, materia WHERE inscripcion.idMateria = materia.idMateria AND inscripcion.idAlumno = ?;";
     try{
           PreparedStatement ps = con.prepareStatement(sql);
           ps.setInt(1,id);
