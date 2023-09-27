@@ -23,19 +23,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     
-    private final ArrayList<Alumno>listaA;
-    private ArrayList<Inscripcion>listaI;
+    private List<Alumno>listaA;
+    private List<Inscripcion>listaI;
+    private List<Materia>listaM;
     
-    private final DefaultTableModel modelo;
-    private final InscripcionData inscData;
-    private final MateriaData mData;
-    private final AlumnoData aData;
+    private DefaultTableModel modelo;
+    private InscripcionData inscData;
+    private MateriaData mData;
+    private AlumnoData aData;
     
     public ActualizacionDeNotas() {
         initComponents();
         
         aData = new AlumnoData();
-        listaA = (ArrayList<Alumno>) aData.listarAlumnos();
+        listaA = aData.listarAlumnos();
+        listaM = mData.listarMateria();
         modelo = new DefaultTableModel();
         inscData = new InscripcionData();
         mData= new MateriaData();
@@ -196,10 +198,12 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     }
 
     private void mostrarNotas(){
-        Inscripcion selec = (Inscripcion) jCBAlumno.getSelectedItem();
-        listaI = (ArrayList)inscData.obtenerMateriasCursadas(selec.getIdInscripcion());
         
-        for(Inscripcion i:listaI){
+        Alumno selec = (Alumno) jCBAlumno.getSelectedItem();
+        List<Inscripcion> lista = inscData.obtenerInscripcionesPorAlumno(selec.getIdAlumno());
+        
+        
+        for(Inscripcion i:lista){
             modelo.addRow(new Object[]{i.getIdInscripcion(), i.getMateria(), i.getNota()});
         }
     }
